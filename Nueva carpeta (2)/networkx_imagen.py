@@ -1,0 +1,47 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+g=nx.Graph()
+
+g.add_node("A")
+g.add_node("B")
+g.add_node("C")
+g.add_node("D")
+g.add_node("J")
+g.add_node("I")
+g.add_node("F")
+g.add_node("K")
+g.add_node("M")
+g.add_node("H")
+g.add_node("G")
+g.add_node("L")
+g.add_node("N")
+
+g.add_edge("A", "B", weight=2)
+g.add_edge("A", "D", weight=6)
+g.add_edge("B", "J", weight=1)
+g.add_edge("B", "C", weight=2)
+g.add_edge("C", "I", weight=3)
+g.add_edge("C", "F", weight=1)
+g.add_edge("D", "I", weight=4)
+g.add_edge("D", "M", weight=3)
+g.add_edge("J", "I", weight=2)
+g.add_edge("I", "H", weight=2)
+g.add_edge("I", "K", weight=7)
+g.add_edge("F", "G", weight=2)
+g.add_edge("F", "K", weight=1)
+g.add_edge("K", "G", weigth=4)
+g.add_edge("M", "N", weight=5)
+g.add_edge("M", "H", weight=3)
+g.add_edge("H", "G", weight=2)
+g.add_edge("H", "N", weight=3)
+g.add_edge("G", "L", weight=2)
+g.add_edge("L", "N", weight=1)
+
+pos = nx.spring_layout(g)
+weight = nx.get_edge_attributes(g, "weight")
+
+nx.draw(g, pos, with_labels=True)
+
+nx.draw_networkx_edge_labels(g, pos, edge_labels=weight)
+plt.show()
